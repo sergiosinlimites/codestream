@@ -387,8 +387,17 @@ export class SimpleCodemarksForFile extends Component<Props, State> {
 		const open = codemarks.filter(codemark => codemark.pinned && codemark.status !== "closed");
 		const closed = codemarks.filter(codemark => codemark.pinned && codemark.status === "closed");
 		const archived = codemarks.filter(codemark => !codemark.pinned);
+		const reviews = codemarks.filter(codemark => codemark.reviewId);
 		return (
 			<>
+				<PaneNode>
+					<PaneNodeName
+						id="codemarks/reviews"
+						title="Feedback Request Comments"
+						count={reviews.length}
+					/>
+					{!hiddenPaneNodes["codemarks/reviews"] && this.renderCodemarksSearchList(reviews)}
+				</PaneNode>
 				<PaneNode>
 					<PaneNodeName id="codemarks/open" title="Open" count={open.length} />
 					{!hiddenPaneNodes["codemarks/open"] && this.renderCodemarksSearchList(open)}
