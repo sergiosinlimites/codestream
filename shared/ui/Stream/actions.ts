@@ -34,7 +34,8 @@ import {
 	UpdateStatusRequestType,
 	UpdateInvisibleRequestType,
 	SetCodemarkPinnedRequestType,
-	CodemarkPlus
+	CodemarkPlus,
+	MarkItemReadRequestType
 } from "@codestream/protocols/agent";
 import { CSPost, StreamType, CSReviewStatus } from "@codestream/protocols/api";
 import { logError } from "../logger";
@@ -105,6 +106,14 @@ export const markPostUnread = (streamId: string, postId: string) => () => {
 		.send(MarkPostUnreadRequestType, { streamId, postId })
 		.catch(error =>
 			logError(`There was an error marking a post unread: ${error}`, { streamId, postId })
+		);
+};
+
+export const markItemRead = (postId: string, numReplies: number) => () => {
+	HostApi.instance
+		.send(MarkItemReadRequestType, { postId, numReplies })
+		.catch(error =>
+			logError(`There was an error marking an item read: ${error}`, { postId, numReplies })
 		);
 };
 
