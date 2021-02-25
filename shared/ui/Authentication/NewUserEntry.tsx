@@ -182,7 +182,7 @@ export const NewUserEntry = (connect(mapStateToProps) as any)((props: Props) => 
 					{(autoJoinInfo.length === 0 || showAdvanced) && (
 						<>
 							<div className="border-bottom-box">
-								<h3>Try CodeStream with your team, for free</h3>
+								<h3><FormattedMessage id="try.codeStream.withTeam" defaultMessage="Try CodeStream with your team, for free"/> </h3>
 								<p>Create a brand-new team for you and your teammates.</p>
 								<Button className="row-button no-top-margin" onClick={onClickCreateTeam}>
 									<Icon name="plus" />
